@@ -165,7 +165,7 @@ function movement:move_to_position(part, cframe, speed, car, target_vehicle, tri
         task.wait(0.5);
     end;
     
-    local y_level = 500;
+    local y_level = 700;
     local higher_position = Vector3.new(vector_position.X, y_level, vector_position.Z); -- 500 studs above target position
 
     repeat -- use velocity to move towards the target position
@@ -312,15 +312,15 @@ local function teleport(cframe, tried) -- unoptimized
 
                 dependencies.variables.stopVelocity = true;
 
-                local enter_attempts = 6;
+                local enter_attempts = 1;
 
                 repeat -- attempt to enter car
                     nearest_vehicle:Callback(true)
                     
-                    enter_attempts = enter_attempts + 6;
+                    enter_attempts = enter_attempts + 1;
 
                     task.wait(0.1);
-                until enter_attempts == 12 or vehicle_object.Seat.PlayerName.Value == player.Name;
+                until enter_attempts == 10 or vehicle_object.Seat.PlayerName.Value == player.Name;
 
                 dependencies.variables.stopVelocity = false;
 
