@@ -42,11 +42,11 @@ local player = players.LocalPlayer;
 
 local dependencies = {
     variables = {
-        up_vector = Vector3.new(0, 500, 0),
-        raycast_params = RaycastParams.new(0,1,0),
-        path = pathfinding_service:CreatePath({WaypointSpacing = 0}),
-        player_speed = 150, 
-        vehicle_speed = 450,
+        up_vector = Vector3.new(0, 700, 0),
+        raycast_params = RaycastParams.new(0,8,0),
+        path = pathfinding_service:CreatePath({WaypointSpacing = 3}),
+        player_speed = Value, 
+        vehicle_speed = Value,
         teleporting = false,
         stopVelocity = false
     },
