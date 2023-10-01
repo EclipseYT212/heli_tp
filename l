@@ -43,7 +43,7 @@ local player = players.LocalPlayer;
 local dependencies = {
     variables = {
         up_vector = Vector3.new(0, 500, 0),
-        raycast_params = RaycastParams.new(),
+        raycast_params = RaycastParams.new(0,1,0),
         path = pathfinding_service:CreatePath({WaypointSpacing = 3}),
         player_speed = 150, 
         vehicle_speed = 450,
@@ -60,7 +60,7 @@ local dependencies = {
     },
     helicopters = { Heli = true }, -- heli is included in free vehicles
     motorcycles = { Volt = true }, -- volt type is "custom" but works the same as a motorcycle
-    free_vehicles = { Camaro = false },
+    free_vehicles = {Heli = true},
     unsupported_vehicles = { SWATVan = true },{ Volt = true },{ Camaro = true },
     door_positions = { }    
 };
