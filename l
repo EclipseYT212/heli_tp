@@ -59,7 +59,6 @@ local dependencies = {
         paraglide = require(replicated_storage.Game.Paraglide)
     },
     helicopters = { Heli = true }, -- heli is included in free vehicles
-    motorcycles =  
     free_vehicles = { Heli = true },
     unsupported_vehicles = { SWATVan = true }, { Camaro = true }, { Volt = true },
     door_positions = { }    
