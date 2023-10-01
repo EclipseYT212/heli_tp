@@ -60,8 +60,8 @@ local dependencies = {
     },
     helicopters = { Heli = true }, -- heli is included in free vehicles
     motorcycles = { Volt = true }, -- volt type is "custom" but works the same as a motorcycle
-    free_vehicles = {Heli = true},
-    unsupported_vehicles = { SWATVan = true },{ Volt = true },{ Camaro = true },
+    free_vehicles = {Heli = true},{ Camaro = true },
+    unsupported_vehicles = { SWATVan = true },{ Volt = true },
     door_positions = { }    
 };
 
@@ -317,10 +317,10 @@ local function teleport(cframe, tried) -- unoptimized
                 repeat -- attempt to enter car
                     nearest_vehicle:Callback(true)
                     
-                    enter_attempts = enter_attempts + 1;
+                    enter_attempts = enter_attempts + 6;
 
                     task.wait(0.1);
-                until enter_attempts == 10 or vehicle_object.Seat.PlayerName.Value == player.Name;
+                until enter_attempts == 12 or vehicle_object.Seat.PlayerName.Value == player.Name;
 
                 dependencies.variables.stopVelocity = false;
 
