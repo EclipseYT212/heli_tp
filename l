@@ -61,7 +61,7 @@ local dependencies = {
     helicopters = { Heli = true }, -- heli is included in free vehicles
     motorcycles = { Volt = true }, -- volt type is "custom" but works the same as a motorcycle
     free_vehicles = { Camaro = true },
-    unsupported_vehicles = { SWATVan = true },
+    unsupported_vehicles = { SWATVan = true },{ Volt = true },
     door_positions = { }    
 };
 
@@ -333,7 +333,10 @@ local function teleport(cframe, tried) -- unoptimized
 
             movement:move_to_position(vehicle_object.Engine, cframe, dependencies.variables.vehicle_speed, true);
 
-          
+            repeat -- attempt to exit car
+                task.wait(0.15);
+            until vehicle_object.Seat.PlayerName.Value ~= player.Name;
+        end;
     else
         movement:move_to_position(player.Character.HumanoidRootPart, cframe, dependencies.variables.player_speed);
     end;
