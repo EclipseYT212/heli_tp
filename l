@@ -45,8 +45,8 @@ local dependencies = {
         up_vector = Vector3.new(0, 700, 0),
         raycast_params = RaycastParams.new(0,8,0),
         path = pathfinding_service:CreatePath({WaypointSpacing = 3}),
-        player_speed = Value, 
-        vehicle_speed = Value,
+        player_speed =600, 
+        vehicle_speed = 500,
         teleporting = false,
         stopVelocity = false
     },
@@ -59,8 +59,7 @@ local dependencies = {
         paraglide = require(replicated_storage.Game.Paraglide)
     },
     helicopters = { Heli = true }, -- heli is included in free vehicles
-    motorcycles = { Volt = true }, -- volt type is "custom" but works the same as a motorcycle
-    free_vehicles = {Heli = true},{ Camaro = true },
+    free_vehicles = { Camaro = true },
     unsupported_vehicles = { SWATVan = true },{ Volt = true },
     door_positions = { }    
 };
