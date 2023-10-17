@@ -42,11 +42,11 @@ local player = players.LocalPlayer;
 
 local dependencies = {
     variables = {
-        up_vector = Vector3.new(0, 700, 0),
-        raycast_params = RaycastParams.new(0,8,0),
+        up_vector = Vector3.new(0, 500, 0),
+        raycast_params = RaycastParams.new(),
         path = pathfinding_service:CreatePath({WaypointSpacing = 3}),
-        player_speed =600, 
-        vehicle_speed = 500,
+        player_speed = 150, 
+        vehicle_speed = 450,
         teleporting = false,
         stopVelocity = false
     },
@@ -58,8 +58,8 @@ local dependencies = {
         character_util = require(replicated_storage.Game.CharacterUtil),
         paraglide = require(replicated_storage.Game.Paraglide)
     },
-   helicopters = { Heli = true }, -- heli is included in free vehicles
-    motorcycles = { Volt = true }, -- volt type is "custom" but works the same as a motorcycle
+    helicopters = { Heli = true }, -- heli is included in free vehicles
+    motorcycles = { Volt = false }, -- volt type is "custom" but works the same as a motorcycle
     free_vehicles = { Camaro = false },
     unsupported_vehicles = { SWATVan = true },
     door_positions = { }    
@@ -165,7 +165,7 @@ function movement:move_to_position(part, cframe, speed, car, target_vehicle, tri
         task.wait(0.5);
     end;
     
-    local y_level = 700;
+    local y_level = 500;
     local higher_position = Vector3.new(vector_position.X, y_level, vector_position.Z); -- 500 studs above target position
 
     repeat -- use velocity to move towards the target position
@@ -333,7 +333,11 @@ local function teleport(cframe, tried) -- unoptimized
 
             movement:move_to_position(vehicle_object.Engine, cframe, dependencies.variables.vehicle_speed, true);
 
-            
+            repeat -- attempt to exit car
+                task.wait(0.15);
+                dependencies.modules.character_util.OnJump();
+            until vehicle_object.Seat.PlayerName.Value ~= player.Name;
+        end;
     else
         movement:move_to_position(player.Character.HumanoidRootPart, cframe, dependencies.variables.player_speed);
     end;
