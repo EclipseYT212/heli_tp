@@ -46,7 +46,7 @@ local dependencies = {
         raycast_params = RaycastParams.new(),
         path = pathfinding_service:CreatePath({WaypointSpacing = 3}),
         player_speed = 100, 
-        vehicle_speed = 959,
+        vehicle_speed = 989,
         teleporting = false,
         stopVelocity = false
     },
@@ -59,9 +59,9 @@ local dependencies = {
         paraglide = require(replicated_storage.Game.Paraglide)
     },
     helicopters = { Heli = true }, -- heli is included in free vehicles
-    motorcycles = { Volt = false }, -- volt type is "custom" but works the same as a motorcycle
-    free_vehicles = { Camaro = true },
-    unsupported_vehicles = { SWATVan = true }, {Lamborghini = true}, {Lamborghini = true}, { Camaro = true }, {Roadster = true},
+    motorcycles = { Volt = true }, -- volt type is "custom" but works the same as a motorcycle
+    free_vehicles = { Camaro = false },
+    unsupported_vehicles = { SWATVan = true }, {Volt = true}, { Lamborghini = true },
     door_positions = { }    
 };
 
@@ -312,7 +312,7 @@ local function teleport(cframe, tried) -- unoptimized
 
                 dependencies.variables.stopVelocity = true;
 
-                local enter_attempts = 1;
+                local enter_attempts = 5;
 
                 repeat -- attempt to enter car
                     nearest_vehicle:Callback(true)
@@ -333,9 +333,9 @@ local function teleport(cframe, tried) -- unoptimized
 
             movement:move_to_position(vehicle_object.Engine, cframe, dependencies.variables.vehicle_speed, true);
 
-             repeat -- attempt to exit car
+            repeat -- attempt to exit car
                 task.wait(0.15);
-               
+              
             until vehicle_object.Seat.PlayerName.Value ~= player.Name;
         end;
     else
