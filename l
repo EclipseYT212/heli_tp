@@ -45,8 +45,8 @@ local dependencies = {
         up_vector = Vector3.new(0, 500, 0),
         raycast_params = RaycastParams.new(),
         path = pathfinding_service:CreatePath({WaypointSpacing = 3}),
-        player_speed = 150, 
-        vehicle_speed = 750,
+        player_speed = 100, 
+        vehicle_speed = 959,
         teleporting = false,
         stopVelocity = false
     },
@@ -60,7 +60,7 @@ local dependencies = {
     },
     helicopters = { Heli = true }, -- heli is included in free vehicles
     motorcycles = { Volt = false }, -- volt type is "custom" but works the same as a motorcycle
-    free_vehicles = { Camaro = false },
+    free_vehicles = {Heli = true},
     unsupported_vehicles = { SWATVan = true }, {Lamborghini = true}, {Lamborghini = true}, { Camaro = true }, {Roadster = true},
     door_positions = { }    
 };
