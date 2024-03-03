@@ -45,8 +45,8 @@ local dependencies = {
         up_vector = Vector3.new(0, 500, 0),
         raycast_params = RaycastParams.new(),
         path = pathfinding_service:CreatePath({WaypointSpacing = 3}),
-        player_speed = 70, 
-        vehicle_speed = 989,
+        player_speed = 150, 
+        vehicle_speed = 950,
         teleporting = false,
         stopVelocity = false
     },
@@ -60,8 +60,8 @@ local dependencies = {
     },
     helicopters = { Heli = true }, -- heli is included in free vehicles
     motorcycles = { Volt = true }, -- volt type is "custom" but works the same as a motorcycle
-    free_vehicles = {},
-    unsupported_vehicles = { SWATVan = true }, {Volt = true}, { Lamborghini = true },{Camaro = true}
+    free_vehicles = { Camaro = false },
+    unsupported_vehicles = { SWATVan = true },{ Camaro = true },{ Model3 = true },
     door_positions = { }    
 };
 
@@ -312,7 +312,7 @@ local function teleport(cframe, tried) -- unoptimized
 
                 dependencies.variables.stopVelocity = true;
 
-                local enter_attempts = 5;
+                local enter_attempts = 1;
 
                 repeat -- attempt to enter car
                     nearest_vehicle:Callback(true)
@@ -335,7 +335,7 @@ local function teleport(cframe, tried) -- unoptimized
 
             repeat -- attempt to exit car
                 task.wait(0.15);
-              
+                dependencies.modules.character_util.OnJump();
             until vehicle_object.Seat.PlayerName.Value ~= player.Name;
         end;
     else
