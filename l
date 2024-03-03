@@ -61,7 +61,7 @@ local dependencies = {
     helicopters = { Heli = true }, -- heli is included in free vehicles
     motorcycles = { Volt = true }, -- volt type is "custom" but works the same as a motorcycle
     free_vehicles = {},
-    unsupported_vehicles = { SWATVan = true }, {Volt = true}, { Lamborghini = true },{Camaro = true},
+    unsupported_vehicles = { SWATVan = true }, {Volt = true}, { Lamborghini = true },{Camaro = true},{Model3 = true}
     door_positions = { }    
 };
 
